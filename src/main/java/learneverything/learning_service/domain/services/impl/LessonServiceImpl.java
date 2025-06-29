@@ -106,7 +106,9 @@ public class LessonServiceImpl implements LessonService {
 
     @Override
     public LessonDTO create(LessonDTO lesson) {
-
+        if (lesson.getId()!= null){
+            throw new BaseException(Error.INVALID_LESSON);
+        }
         LessonEntity lessonEntity1 = lessonRepository.findById(lesson.getId())
                 .orElseThrow(() -> new BaseException(Error.NOT_FOUND_LESSON, String.valueOf(lesson.getId())));
 
