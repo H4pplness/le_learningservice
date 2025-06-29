@@ -109,11 +109,8 @@ public class LessonServiceImpl implements LessonService {
         if (lesson.getId()!= null){
             throw new BaseException(Error.INVALID_LESSON);
         }
-        LessonEntity lessonEntity1 = lessonRepository.findById(lesson.getId())
-                .orElseThrow(() -> new BaseException(Error.NOT_FOUND_LESSON, String.valueOf(lesson.getId())));
-
-        ChapterEntity chapterEntity = chapterRepository.findById(lessonEntity1.getChapterId())
-                .orElseThrow(() -> new BaseException(Error.NOT_FOUND_CHAPTER, String.valueOf(lessonEntity1.getChapterId())));
+        ChapterEntity chapterEntity = chapterRepository.findById(lesson.getChapterId())
+                .orElseThrow(() -> new BaseException(Error.NOT_FOUND_CHAPTER, String.valueOf(lesson.getChapterId())));
 
         ClazzEntity clazzEntity = clazzRepository.findById(chapterEntity.getClazzId())
                 .orElseThrow(()-> new BaseException(Error.NOT_FOUND_CLAZZ, chapterEntity.getClazzId().toString()));
