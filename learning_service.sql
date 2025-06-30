@@ -5,7 +5,8 @@ CREATE TABLE clazz (
 	title varchar(100) not null,
 	description varchar(500) not null,
 	image_url varchar(500),
-	author_id varchar(100) not null
+	author_id varchar(100) not null,
+    status smallint DEFAULT 1
 );
 
 CREATE TABLE chapter (
